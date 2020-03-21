@@ -1,5 +1,5 @@
 <script>
-	// import Licenses from "./Licenses.svelte";
+	import Licenses from "./lisences/MLicenses.svelte";
 	import Downloads from "./downloads/Downloads.svelte";
 	// import Users from "./Users.svelte";
 
@@ -33,12 +33,13 @@
 		</ul>
 	</div>
 	<div class="content">
-		<!-- {#if mode == 'licenses'}
+		{#if mode == 'licenses'}
 			<Licenses />
-		{:else if mode == 'downloads'} -->
+		{:else if mode == 'downloads'}
 			<Downloads />
 		<!-- {:else if mode == 'users'}
 			<Users />
 		{:else}not ready yet{/if} -->
+		{/if}
 	</div>
 </main>
