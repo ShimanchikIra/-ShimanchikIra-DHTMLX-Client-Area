@@ -1,30 +1,44 @@
 <script>
-	export let name;
-</script>
+	// import Licenses from "./Licenses.svelte";
+	import Downloads from "./downloads/Downloads.svelte";
+	// import Users from "./Users.svelte";
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+	let mode = "licenses";
+
+	function showPage(v) {
+		mode = v;
+	}
+</script>
 
 <style>
 	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 200px auto;
+		grid-template-areas: "left center";
 	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
+	.navigation {
+		grid-area: left;
 	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
+	.content {
+		grid-area: center;
 	}
 </style>
+
+<main>
+	<div class="navigation">
+		<ul>
+			<li on:click={() => (mode = 'licenses')}>Licenses</li>
+			<li on:click={() => (mode = 'downloads')}>Downloads</li>
+			<li on:click={() => (mode = 'users')}>Users</li>
+		</ul>
+	</div>
+	<div class="content">
+		<!-- {#if mode == 'licenses'}
+			<Licenses />
+		{:else if mode == 'downloads'} -->
+			<Downloads />
+		<!-- {:else if mode == 'users'}
+			<Users />
+		{:else}not ready yet{/if} -->
+	</div>
+</main>
