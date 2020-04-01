@@ -6,7 +6,7 @@ export function getAuth(email, license) {
 		isAuth = new Promise((res, rej) => {
 			setTimeout(
 				() => {
-					if (email == "Ivan" && license === "123B4") {
+					if ((email == "Ivan" && license === "123B4") || (email == "Ira" && license === "123B4")){
 						res((isAuth = true));
 					} else {
 						res((isAuth = false));
