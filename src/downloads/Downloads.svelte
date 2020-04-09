@@ -6,17 +6,30 @@
 	let allDownloads = [];
 	let productNames = [];
 
-	let downloadPromise = getDownloads().then(data => {
-		allDownloads = chahgeDownloads(data);
-		productNames = getProductNames(data);
-	});
-
-	function hideArchive(event) {
-		isShowArchive = event.detail.isShowArchive;
+	async function getData(url) {
+		let response = await fetch(url);
+		let data = await response.json();
+		return data;
 	}
 
-	function showArchive(event) {
-		isShowArchive = event.detail.isShowArchive;
+	// let downloadPromise = getDownloads().then(data => {
+	// 	allDownloads = chahgeDownloads(data);
+	// 	productNames = getProductNames(data);
+	// });
+	$: downloadPromise = getData("/").then(d => {
+		allDownloads = chahgeDownloads(d);
+		 productNames = getProductNames(d);
+	});
+
+	function hideArchive() {
+		//isShowArchive = event.detail.isShowArchive;
+		isShowArchive = true;
+	}
+
+	function showArchive() {
+		//isShowArchive = event.detail.isShowArchive;
+		//console.log(event.detail.isShowArchive);
+		isShowArchive = false;
 	}
 
 	function getProductNames(downloads) {

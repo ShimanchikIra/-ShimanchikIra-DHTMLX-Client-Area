@@ -43,9 +43,7 @@
 	);
 
 	function showArchive() {
-		dispatch("stateArchive", {
-			isShowArchive: true,
-		});
+		dispatch("stateArchive");
 	}
 
 	function findLatestVersions(data, products) {

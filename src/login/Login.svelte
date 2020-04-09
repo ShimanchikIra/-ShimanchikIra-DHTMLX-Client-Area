@@ -93,7 +93,7 @@
 
 <div class="wrapper">
 
-	<div class="loginForm">
+	<!-- <div class="loginForm">
 		<h1>DHTMLX Client Area</h1>
 		<div class="form">
 			<div class="errorWrapper">
@@ -109,6 +109,28 @@
 			<input
 				type="text"
 				placeholder="License"
+				bind:value={license}
+				class:err={!isAuth} />
+			<div class="button" on:click={submit}>Login</div>
+		</div>
+		<a href="/">Buy a license &rarr;</a>
+	</div> -->
+	<div class="loginForm">
+		<h1>DHTMLX Client Area</h1>
+		<div class="form">
+			<div class="errorWrapper">
+				{#if !isAuth}
+					<span class="spanErr">Invalid license</span>
+				{/if}
+			</div>
+			<input
+				type="text"
+				placeholder="Email"
+				bind:value={email}
+				class:err={!isAuth} />
+			<input
+				type="text"
+				placeholder="Company"
 				bind:value={license}
 				class:err={!isAuth} />
 			<div class="button" on:click={submit}>Login</div>
