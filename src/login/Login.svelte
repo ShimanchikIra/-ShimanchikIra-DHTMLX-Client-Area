@@ -5,15 +5,28 @@
 	let email = "",
 		license = "";
 	$: isAuth = " " || email || license;
+	let is_Auth;
+
+	// async function getData(url) {
+	// 	let response = await fetch(url);
+	// 	let data = await response.text();
+	// 	return data;
+	// }
+
+	// $: downloadPromise = getData("/api/t").then(d => {
+	// 	alert(d);
+	// });
 
 	function submit() {
 		getAuth(email, license).then(res => {
-			isAuth = res;
-			let user = {
-				email_user: email,
-				license_user: license
-			}
-			setUser(user);
+		//	let user = res;
+			// let user = {
+			// 	email_user: email,
+			// 	license_user: license,
+			// 	role_user: role
+			// }
+			alert(res)
+			setUser(res);
 		});
 	}
 

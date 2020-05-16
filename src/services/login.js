@@ -1,15 +1,28 @@
-let isAuth;
+let auth_user;
 
 export function getAuth(email, license) {
-	if (!isAuth)
+	if (!auth_user)
 		// mimic async. loading from a server side
-		isAuth = new Promise((res, rej) => {
+		auth_user = new Promise((res, rej) => {
 			setTimeout(
 				() => {
-					if ((email == "Ivan" && license === "123B4") || (email == "Ira" && license === "123B4")){
-						res((isAuth = true));
-					} else {
-						res((isAuth = false));
+					if (email === "Ivan" && license === "123B4"){
+						res((auth_user = {
+							email: "Ivan",
+							license: "123B4",
+							role: 'user'
+						}
+							));
+					} 
+					else if (email === "Ira" && license === "123B4"){
+						res((auth_user = {
+							email: "Ira",
+							license: "123B4",
+							role: 'admin'
+						}));
+					}
+					else {
+						res((auth_user = false));
 					}
 				},
 
@@ -17,5 +30,5 @@ export function getAuth(email, license) {
 			);
 		});
 
-	return isAuth;
+	return auth_user;
 }

@@ -3,6 +3,7 @@
 	import DownloadsTable from "./DownloadsTable.svelte";
 	export let downloads;
 	export let products;
+	export let isVisibleButton = true;
 
 	let selectedProduct;
 	let headersForTable = ["", "Product", "Version", "Release Date"];
@@ -59,10 +60,12 @@
 </style>
 
 <div class="archive-box">
+{#if !!isVisibleButton}
 	<button class="archive-box__button" on:click={hideArchive}>
 		<img src="arrow-left.png" alt="arrow" class="archive-box__img" />
 		Archive Of Previous Versions
 	</button>
+{/if}
 	<div class="archive">
 		<select bind:value={selectedProduct} class="archive-select">
 			{#each products as product}
